@@ -1,13 +1,15 @@
-hawaii-coral-bleaching-2019 repository README
+coralnet-bleaching-classifier-development repository README
 
-This repository contains code used to analyze the 2019 coral bleaching data collected across the Hawaiian Archipelago. There are six scripts included in this repository:
-1) "2019_bleaching_drivers_analysis.R" This script investigates environmental and anthropogenic drivers of the 2019 bleaching event.
-2) "2019_bleaching_spatial_analysis.R" This script examines spatial variability of the 2019 bleaching response across the archieplago.
-3) "2019_bleaching_spatial_mapping.R" This script creates maps using ggmap() that show cluster-level bleaching responses at each island surveyed.
-4) "2019_beaching_taxa_analysis.R" This script looks at differences in the 2019 bleaching response between different coral taxa at the domain and island scale.
-5) "2019_bleaching_temporal_time_series.R" This script extracts satellite sea surface temperature and degree heating week data, and plots over time at each island surveyed to create visualizaitons of long-term trends in temperature and heat stress.
-6) "2019_bleaching_temporal_analysis.R" This script analyzes differences in the 2019 bleaching response to the bleaching response experienced during the last major bleaching event prior (2015 in the Main Hawaiian Islands; 2014 in the Northwestern Hawaiian Islands). 
+This repository contains code used to develop a CoralNet classifier to automate annotations of coral bleaching. There are four scripts included here:
 
-These scripts use data that has been archived and documented in InPort. 
-- To learn more about and to access the cluster-level data used in the spatial, temporal, and taxa-level analyses, visit: https://www.fisheries.noaa.gov/inport/item/64324
-- To learn more about and to access the site-level data used in the taxa-level analysis, visit: https://www.fisheries.noaa.gov/inport/item/59191
+"Point_Annotator_Raster_v1.0.R"
+This script serves as a tool to generate additional targeted annotations, which can later be uploaded to CoralNet. The script currently contains labels for the CREP-HAWAII BLEACHING v3 CoralNet Source; however, it can be altered to work for other simple labelsets.
+"Point_Annotator_Review.R"
+As the name implies, the purpose of this script is to review the annotations created in "Point_Annotator_Raster_v1.0.R" and should be used immediately after. 
+"Annotation_Row_invert.R"
+The row coordinates of annotations generated in "Point_Annotator_Raster_v1.0.R" appear inverted when uploaded to CoralNet. Thus, "Annotation_Row_invert.R" was created to invert row values for each annotation. Please note that row values are dependent on image height, so if image height varies within an imageset, that will need to be taken into consideration (this is noted in the script as well).
+"V3_Bleaching_Site_Sorting.R"
+This script was created to randomly sort sites into two categories: Training sites (80%) and Test sites (20%). It should be mentioned that sites with annotations generated with "Point_Annotator_Raster_v1.0.R" were automatically classified as Training sites. The script itself can easily be altered to include sites with targeted annotations in the random sorting process.
+
+To learn more about the development of the NOAA coral bleaching classifier & instructions on creating your own, please visit: [insert link to admin report once published]
+To learn more about CoralNet, visit: https://coralnet.ucsd.edu/about/
